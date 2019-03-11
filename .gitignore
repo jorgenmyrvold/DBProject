@@ -1,2 +1,7 @@
 # Intellij setup filer
 .idea/
+/bin/
+
+# Eclipse setup filer
+.classpath
+.project
