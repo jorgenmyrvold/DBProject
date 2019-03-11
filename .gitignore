@@ -1,2 +1,5 @@
 # Intellij setup filer
 .idea/
+
+#Intellij
+out/
