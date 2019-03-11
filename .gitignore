@@ -5,3 +5,7 @@
 # Eclipse setup filer
 .classpath
 .project
+
+
+#Intellij
+out/

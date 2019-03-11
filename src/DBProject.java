@@ -16,15 +16,15 @@ public class DBProject {
     void createConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnction("jdbc.mysql://localhost:3306/DatDatProsjekt", "root", "root");
+            Connection con = DriverManager.getConnection("jdbc.mysql://localhost:3306/DBProject", "root", "root");
             System.out.println("Connected to database!");
         }
 
         catch (SQLException e) {
-            Logger.getLogger(DatDatProsjekt.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DBProject.class.getName()).log(Level.SEVERE, null, e);
         }
         catch (ClassNotFoundException e) {
-            Logger.getLogger(DatDatProsjekt.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DBProject.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
