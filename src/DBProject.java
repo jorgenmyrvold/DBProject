@@ -6,17 +6,18 @@ import java.util.logging.Logger;
 
 public class DBProject {
 
-    public static void main(String[] args) {
-
-        DBProject pro = new DBProject();
-        pro.createConnection();
-
-    }
-
     void createConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc.mysql://localhost:3306/DBProject", "root", "root");
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			} catch (InstantiationException | IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            String url = "jdbc:mysql://mysql.stud.ntnu.no/sigmunom_treningsdagbok";
+            String user = "sigmunom_DatDat";
+            String pw = "salem";
+            Connection con = DriverManager.getConnection(url, user, pw);
             System.out.println("Connected to database!");
         }
 
@@ -26,6 +27,13 @@ public class DBProject {
         catch (ClassNotFoundException e) {
             Logger.getLogger(DBProject.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+    
+    public static void main(String[] args) {
+
+        DBProject pro = new DBProject();
+        pro.createConnection();
+
     }
 
 }
