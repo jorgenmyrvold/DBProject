@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DBProject {
+public class DBConn {
 
     void createConnection() {
         try {
@@ -22,16 +22,16 @@ public class DBProject {
         }
 
         catch (SQLException e) {
-            Logger.getLogger(DBProject.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DBConn.class.getName()).log(Level.SEVERE, null, e);
         }
         catch (ClassNotFoundException e) {
-            Logger.getLogger(DBProject.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(DBConn.class.getName()).log(Level.SEVERE, null, e);
         }
     }
     
     public static void main(String[] args) {
 
-        DBProject pro = new DBProject();
+        DBConn pro = new DBConn();
         pro.createConnection();
 
     }
