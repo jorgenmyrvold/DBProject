@@ -13,7 +13,7 @@ public class Helpers {
 		String dato = getDato(reader);
 		
 		while (true) {
-			System.out.println("Når begynte treningen? (HH:MM)");
+			System.out.println("NÃ¥r begynte treningen? (HH:MM)");
 			String ans = reader.next();
 			
 			if (ans.matches("\\d+:\\d+")) {
@@ -36,7 +36,7 @@ public class Helpers {
 				return reader.nextInt();
 			}
 			reader.next();
-			System.out.println(RED + "Input må vere et helt antall minutter" + RESET);
+			System.out.println(RED + "Input mÃ¥ vere et helt antall minutter" + RESET);
 		}
 	}
 	
@@ -47,7 +47,7 @@ public class Helpers {
 				return reader.nextInt();
 			}
 			reader.next();
-			System.out.println(RED + "Input må vere et heltall mellom 0 og 10" + RESET);
+			System.out.println(RED + "Input mÃ¥ vere et heltall mellom 0 og 10" + RESET);
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class Helpers {
 				return reader.nextInt();
 			}
 			reader.next();
-			System.out.println(RED + "Input må vere et heltall mellom 0 og 10" + RESET);
+			System.out.println(RED + "Input mï¿½ vere et heltall mellom 0 og 10" + RESET);
 		}
 	}
 	

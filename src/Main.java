@@ -13,7 +13,7 @@ public class Main {
 	
 	
 	
-	
+
 	public static void regTrening() {
 		Scanner reader = new Scanner(System.in);
 		String tidspunkt = Helpers.getDatetime(reader);
