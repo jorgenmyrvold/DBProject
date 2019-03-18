@@ -1,7 +1,7 @@
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RegOvelseIGruppeCtrl {
+public class RegOvelseIGruppeCtrl extends DBConn{
     private PreparedStatement regStatement;
 
     public RegOvelseIGruppeCtrl() {
