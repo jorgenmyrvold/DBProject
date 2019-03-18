@@ -16,6 +16,9 @@ public class RegOvelseIGruppeCtrl extends DBConn{
     }
 
     public void regOvelse(String ovelseNavn, String gruppeNavn) {
+        connect();
+        startReg();
+
         try {
             regStatement.setString(1, ovelseNavn);
             regStatement.setString(2, gruppeNavn);

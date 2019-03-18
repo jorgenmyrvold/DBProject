@@ -17,6 +17,9 @@ public class RegTreningCtrl extends DBConn {
     }
     public void regTrening (String tidspunkt, int varighet, int form, int prestasjon, String notat) {
     	// tidspunkt format: YYYY-MM-DD HH:MM(:SS)
+        connect();
+        startReg();
+
         try {
             regStatement.setString(1, tidspunkt);
             regStatement.setInt(2, varighet);

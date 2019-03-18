@@ -16,6 +16,9 @@ public class RegApparatCtrl extends DBConn {
         }
     }
     public void regApparat (String navn, String beskrivelse) {
+        connect();
+        startReg();
+
         try {
             regStatement.setString(1, navn);
             regStatement.setString(2, beskrivelse);

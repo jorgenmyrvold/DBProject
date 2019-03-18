@@ -58,13 +58,14 @@ public class Helpers {
 				return reader.nextInt();
 			}
 			reader.next();
-			System.out.println(RED + "Input m� vere et heltall mellom 0 og 10" + RESET);
+			System.out.println(RED + "Input må vere et heltall mellom 0 og 10" + RESET);
 		}
 	}
 	
 	public static String getNote(Scanner reader) {
 		System.out.println("Har du en kommentar til treningen?");
-		return reader.next();
+		reader.nextLine();
+		return reader.nextLine();
 	}
 	
 	private static String getDato(Scanner reader) {
@@ -102,4 +103,44 @@ public class Helpers {
 	            return false;
 	        }
 	}
+
+    public static String getApparatNavn(Scanner reader) {
+        System.out.println("Hva er navnet på apparatet?");
+        return reader.next();
+    }
+
+    public static String getApparatBeskrivelse(Scanner reader) {
+        System.out.println("Beskriv apparatet");
+        reader.nextLine();
+        return reader.nextLine();
+    }
+
+    public static String getGruppeNavn(Scanner reader) {
+        System.out.println("Hva kalles treningsgruppen?");
+        return reader.nextLine();
+    }
+
+    public static Boolean getIsApparat(Scanner reader) {
+		System.out.println("Er det apparat eller fri øvelse (a/f)");
+		String ans = reader.next();
+		while (true) {
+			if (ans.equalsIgnoreCase("a")) {
+				return true;
+			} else if (ans.equalsIgnoreCase("f")) {
+				return false;
+			}
+			System.out.println("Skriv inn gyldig input (a/f)");
+			ans = reader.next();
+		}
+	}
+
+    public static String getOvelseNavn(Scanner reader) {
+        System.out.println("Hva er navnet på øvelsen?");
+        return reader.nextLine();
+    }
+
+    public static String getOvelseBeskrivelse(Scanner reader) {
+        System.out.println("Beskriv av øvelsen?");
+        return reader.nextLine();
+    }
 }
