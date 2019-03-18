@@ -1,3 +1,5 @@
+DROP TABLES IF EXISTS OvelserITreningsokt, OvelseIGruppe, Treningsokt, Ovelse, Apparat;
+
 CREATE TABLE Treningsokt(
 	TreningsoktID INTEGER NOT NULL AUTO_INCREMENT,
     Tidspunkt DATETIME,
@@ -11,7 +13,7 @@ CREATE TABLE Treningsokt(
   
   
 CREATE TABLE Apparat(
-	ApparatNavn VARCHAR(50),
+	ApparatNavn VARCHAR(50) NOT NULL,
     Beskrivelse VARCHAR(255),
     CONSTRAINT Apparat_PK PRIMARY KEY (ApparatNavn));
     
@@ -19,17 +21,12 @@ CREATE TABLE Apparat(
 CREATE TABLE Ovelse(
 	OvelseNavn VARCHAR(50) NOT NULL,
     Beskrivelse VARCHAR(255),
-#    ApparatNavn VARCHAR(50),
-    CONSTRAINT Ovelse_PK PRIMARY KEY (OvelseNavn)
-#	CONSTRAINT Ovelse_FK FOREIGN KEY (ApparatNavn) 	REFERENCES Apparat(ApparatNavn)
-#													ON DELETE NO ACTION
-#													ON UPDATE NO ACTION);
-);
-
-CREATE TABLE ApparatTilOvelse(
-	OvelseNavn VARCHAR(50) NOT NULL,
-    ApparatNavn VARCHAR(50) NOT NULL
-);                                                            
+    ApparatNavn VARCHAR(50),
+    CONSTRAINT Ovelse_PK PRIMARY KEY (OvelseNavn),
+	CONSTRAINT Ovelse_FK FOREIGN KEY (ApparatNavn) 	REFERENCES Apparat(ApparatNavn)
+													ON DELETE NO ACTION
+													ON UPDATE NO ACTION);
+                                                            
 CREATE TABLE OvelserITreningsokt(
 	TreningsoktID INTEGER NOT NULL,
     OvelseNavn VARCHAR(50) NOT NULL,
