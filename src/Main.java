@@ -7,10 +7,38 @@ public class Main {
 	}
 	
 	
-	
-
-	public static void regTrening() {
+	public static void run() {
 		Scanner reader = new Scanner(System.in);
+		String menu = ("Hva vil du gj�re? (0-?)\n" +
+				"1) Registrer trening \n" +
+				"2) Se siste trenings�kter\n" +
+				"3) ???\n" +
+				"0) Avslutt\n");
+		String ans = "";
+		
+		while (ans != "0") {
+			System.out.println(menu);
+			ans = reader.next();
+			switch(ans) {
+			case "1":
+				regTrening(reader);
+				break;
+			case "2":
+				System.out.println("Henter ut liste over trenings�kter");
+				break;
+			case "3":
+				System.out.println("Ett eller anna");
+				break;
+			case "0":
+				reader.close();
+				return;
+			default:
+				System.out.println("Input m� vere et tall mellom 0 og 3");
+			}
+		}
+	}
+
+	public static void regTrening(Scanner reader) {
 		String tidspunkt = Helpers.getDatetime(reader);
 		int varighet = Helpers.getVarighet(reader);
 		int form = Helpers.getForm(reader);
@@ -23,11 +51,7 @@ public class Main {
 		regTrening.regTrening(tidspunkt, varighet, form, prestasjon, notat);
 	}
 
-
-
-// Registrer øvelse uten ekstra tabell, funker ikke heilt
-    public static void regOvelse() {
-        Scanner reader = new Scanner(System.in);
+    public static void regOvelse(Scanner reader) {
         String ovelseNavn = Helpers.getOvelseNavn(reader);
         String ovelseBeskrivelse = Helpers.getOvelseBeskrivelse(reader);
         Boolean isApparat = Helpers.getIsApparat(reader);
@@ -65,6 +89,7 @@ public class Main {
 	public static void main(String[] args) {
 		Main main = new Main();
 
+		run();
 //		regOvelse();
 //		regTrening();
 //        regApparat();
