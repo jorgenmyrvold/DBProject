@@ -25,28 +25,10 @@ public class Main {
 		
 		
 		RegTreningCtrl regTrening = new RegTreningCtrl();
-//		regTrening.connect();
-//		regTrening.startReg();
 		regTrening.regTrening(tidspunkt, varighet, form, prestasjon, notat);
 	}
 
-// Registrer øvelse med med overgangstabell
-//	public static void regOvelse() {
-//		Scanner reader = new Scanner(System.in);
-//		String ovelseNavn = Helpers.getOvelseNavn(reader);
-//		String ovelseBeskrivelse = Helpers.getOvelseBeskrivelse(reader);
-//		Boolean isApparat = Helpers.getIsApparat(reader);
-//
-//        RegOvelseCtrl regOvelse = new RegOvelseCtrl();
-//		if (isApparat){
-//		    String apparatNavn = Helpers.getApparatNavn(reader);
-//              regOvelse.regApparatOvelse(ovelseNavn, ovelseBeskrivelse, apparatNavn);
-//        }
-//        else {
-//            regOvelse.regFriOvelse(ovelseNavn, ovelseBeskrivelse);
-//        }
-//        reader.close();
-//	}
+
 
 // Registrer øvelse uten ekstra tabell, funker ikke heilt
     public static void regOvelse() {
