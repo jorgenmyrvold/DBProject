@@ -2,6 +2,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Helpers {
@@ -142,5 +143,19 @@ public class Helpers {
     public static String getOvelseBeskrivelse(Scanner reader) {
         System.out.println("Beskriv av Ã¸velsen?");
         return reader.nextLine();
+    }
+    
+    public static ArrayList<String> getOvelseGrupper(Scanner reader) {
+    	System.out.println("Hvilke(n) øvelsegruppe hører øvelsen til? \n" + 
+    			"Trykk enter mellom hver gruppe og avslutt med 'q'");
+    	ArrayList<String> ovelseGrupper = new ArrayList<String>();
+    	while (true) {
+    		String gruppe = reader.next();
+    		if (gruppe.equals("q")) {
+    			break;
+    		}
+    		ovelseGrupper.add(gruppe);
+    	}
+    	return ovelseGrupper;
     }
 }
