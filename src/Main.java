@@ -9,9 +9,9 @@ public class Main {
 	
 	public static void run() {
 		Scanner reader = new Scanner(System.in);
-		String menu = ("Hva vil du gj�re? (0-?)\n" +
+		String menu = ("\nHva vil du gj�re? (0-?)\n" +
 				"1) Registrer trening \n" +
-				"2) Se siste trenings�kter\n" +
+				"2) Se siste treningsøkter\n" +
 				"3) ???\n" +
 				"0) Avslutt\n");
 		String ans = "";
@@ -24,7 +24,7 @@ public class Main {
 				regTrening(reader);
 				break;
 			case "2":
-				System.out.println("Henter ut liste over trenings�kter");
+				getNSisteOvelser(reader);
 				break;
 			case "3":
 				System.out.println("Ett eller anna");
@@ -77,10 +77,8 @@ public class Main {
         regApparatCtrl.regApparat(apparatNavn, apparatBeskrivelse);
     }
 
-    public static void getNSisteOvelser() {
-		Scanner reader = new Scanner(System.in);
+    public static void getNSisteOvelser(Scanner reader) {
 		int n = Helpers.getN(reader);
-		reader.close();
 
 		DBQuery getNSisteTreninger = new DBQuery();
 		getNSisteTreninger.getNSisteTreningsokter(n);
@@ -93,7 +91,7 @@ public class Main {
 //		regOvelse();
 //		regTrening();
 //        regApparat();
-		getNSisteOvelser();
+//		getNSisteOvelser();
 		
 	}	
 }
