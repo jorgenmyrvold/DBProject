@@ -50,10 +50,31 @@ public class Main {
 		
 		RegTreningCtrl regTrening = new RegTreningCtrl();
 		regTrening.regTrening(tidspunkt, varighet, form, prestasjon, notat);
+		
+		
+	}
+	
+	private static void regGjennomfortOvelse(Scanner reader) {
+		String ovelseNavn = Helpers.getOvelseNavn(reader);
+		DBQuery query = new DBQuery();
+        if (!query.ovelseExisits(ovelseNavn)) {
+        	regOvelse(reader, ovelseNavn);
+        }
+        String apparat = query.getApparat(ovelseNavn);
+        RegGjennomfortOvelseCtrl ctrl = new RegGjennomfortOvelseCtrl();
+        if (apparat == null) {
+        	String beskrivelse = Helpers.getOvelseBeskrivelse(reader);
+        	ctrl.regFriOvelse(ovelseNavn, beskrivelse);
+        	
+        } else {
+        	int vekt = Helpers.getVekt(reader);
+        	int antallSett = Helpers.getAntallSet(reader);
+        	ctrl.regApparatOvelse(ovelseNavn, vekt, antallSett);
+        }
 	}
 
-    public static void regOvelse(Scanner reader) {
-        String ovelseNavn = Helpers.getOvelseNavn(reader);
+    public static void regOvelse(Scanner reader, String...strings) {
+    	String ovelseNavn = strings.length == 1 ? strings[0] : Helpers.getOvelseNavn(reader);
         String ovelseBeskrivelse = Helpers.getOvelseBeskrivelse(reader);
         Boolean isApparat = Helpers.getIsApparat(reader);
         ArrayList<String> ovelseGrupper = Helpers.getOvelseGrupper(reader);
@@ -91,13 +112,12 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		Main main = new Main();
+//		Main main = new Main();
 
-		run();
+//		run();
 //		regOvelse();
 //		regTrening();
 //        regApparat();
-		getNSisteOvelser();
-		
+//		getNSisteOvelser();		
 	}	
 }

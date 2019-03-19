@@ -1,4 +1,5 @@
-DROP TABLES IF EXISTS OvelserITreningsokt, OvelseIGruppe, Treningsokt, Ovelse, Apparat;
+#DROP TABLES IF EXISTS OvelserITreningsokt, OvelseIGruppe, Treningsokt, Ovelse, Apparat;
+DROP TABLE OvelserITreningsokt;
 
 CREATE TABLE Treningsokt(
 	TreningsoktID INTEGER NOT NULL AUTO_INCREMENT,
@@ -28,7 +29,7 @@ CREATE TABLE Ovelse(
 													ON UPDATE NO ACTION);
                                                             
 CREATE TABLE OvelserITreningsokt(
-	TreningsoktID INTEGER NOT NULL,
+	TreningsoktID INTEGER NOT NULL AUTO_INCREMENT,
     OvelseNavn VARCHAR(50) NOT NULL,
     Vekt INTEGER,
     AntallSett INTEGER,

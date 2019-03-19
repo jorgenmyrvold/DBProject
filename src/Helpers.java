@@ -42,8 +42,8 @@ public class Helpers {
 	}
 	
 	public static int getForm(Scanner reader) {
+		System.out.println("Hvordan var formen? (0-10)");
 		while (true) {
-			System.out.println("Hvordan var formen? (0-10)");
 			if (reader.hasNextInt()) {
 				return reader.nextInt();
 			}
@@ -53,8 +53,8 @@ public class Helpers {
 	}
 	
 	public static int getEffort(Scanner reader) {
+		System.out.println("Hvordan presterte du? (0-10)");
 		while (true) {
-			System.out.println("Hvordan presterte du? (0-10)");
 			if (reader.hasNextInt()) {
 				return reader.nextInt();
 			}
@@ -141,7 +141,7 @@ public class Helpers {
     }
 
     public static String getOvelseBeskrivelse(Scanner reader) {
-        System.out.println("Beskriv av øvelsen?");
+        System.out.println("Beskrivelse av øvelsen?");
         return reader.nextLine();
     }
     
@@ -163,4 +163,26 @@ public class Helpers {
 		System.out.println("Hvor mange øvelser ønsker du å se resultater fra?");
 		return reader.nextInt();
 	}
+    
+    public static int getVekt(Scanner reader) {
+    	System.out.println("Hvor mange kg?");
+    	while (true) {
+			if (reader.hasNextInt()) {
+				return reader.nextInt();
+			}
+			reader.next();
+			System.out.println(RED + "Input må vere et heltall" + RESET);
+		}
+    }
+    
+    public static int getAntallSet(Scanner reader) {
+    	System.out.println("Hvor mange set?");
+    	while (true) {
+			if (reader.hasNextInt()) {
+				return reader.nextInt();
+			}
+			reader.next();
+			System.out.println(RED + "Input må vere et heltall" + RESET);
+		}
+    }
 }
