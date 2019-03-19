@@ -65,7 +65,6 @@ public class Helpers {
 	
 	public static String getNote(Scanner reader) {
 		System.out.println("Har du en kommentar til treningen?");
-		reader.nextLine();
 		return reader.nextLine();
 	}
 	
@@ -107,12 +106,11 @@ public class Helpers {
 
     public static String getApparatNavn(Scanner reader) {
         System.out.println("Hva er navnet på apparatet?");
-        return reader.next();
+        return reader.nextLine();
     }
 
     public static String getApparatBeskrivelse(Scanner reader) {
         System.out.println("Beskriv apparatet");
-        reader.nextLine();
         return reader.nextLine();
     }
 
@@ -137,7 +135,10 @@ public class Helpers {
 
     public static String getOvelseNavn(Scanner reader) {
         System.out.println("Hva er navnet på øvelsen?");
-        return reader.nextLine();
+        if (reader.hasNextLine() ) {
+        	return reader.nextLine();        	
+        }
+        return null;
     }
 
     public static String getOvelseBeskrivelse(Scanner reader) {

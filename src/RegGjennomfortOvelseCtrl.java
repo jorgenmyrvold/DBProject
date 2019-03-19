@@ -46,9 +46,9 @@ public class RegGjennomfortOvelseCtrl extends DBConn {
     }
 
     
-    public static void main(String[] args) {
-		RegGjennomfortOvelseCtrl ctrl = new RegGjennomfortOvelseCtrl();
-//		ctrl.regApparatOvelse("Benkpress", 50, 3);
-		ctrl.regFriOvelse("Situps", "Tungt idag!");
-	}
+//    public static void main(String[] args) {
+//		RegGjennomfortOvelseCtrl ctrl = new RegGjennomfortOvelseCtrl();
+////		ctrl.regApparatOvelse("Benkpress", 50, 3);
+//		ctrl.regFriOvelse("Situps", "Tungt idag!");
+//	}
 }

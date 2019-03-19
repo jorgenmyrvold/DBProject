@@ -41,13 +41,12 @@ public class DBQuery extends DBConn{
         try {
             PreparedStatement getData = conn.prepareStatement("SELECT * FROM OvelseIGruppe WHERE Gruppenavn = '" + gruppenavn + "'");
             ResultSet rs = getData.executeQuery();
-
+            
             System.out.println("Følgende øvelser hører til " + gruppenavn);
 
             while (rs.next()) {
                 System.out.println(rs.getString(1));
             }
-
         } catch (Exception e) {
             System.out.println("db error fetching data = "+e);
         }
@@ -95,8 +94,8 @@ public class DBQuery extends DBConn{
     }
     
     public static void main(String[] args) {
-		DBQuery query = new DBQuery();
-		System.out.println(query.getApparat("Benkpress"));
-		
+//		DBQuery query = new DBQuery();
+//		System.out.println(query.getApparat("Benkpress"));
+//		System.out.println(String.format("%20s hei", "hei"));
 	}
 }
