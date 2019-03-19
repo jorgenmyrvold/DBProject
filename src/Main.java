@@ -1,8 +1,3 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -58,13 +53,22 @@ public class Main {
         regApparatCtrl.regApparat(apparatNavn, apparatBeskrivelse);
     }
 
+    public static void getNSisteOvelser() {
+		Scanner reader = new Scanner(System.in);
+		int n = Helpers.getN(reader);
+		reader.close();
+
+		DBQuery getNSisteTreninger = new DBQuery();
+		getNSisteTreninger.getNSisteTreningsokter(n);
+	}
 	
 	public static void main(String[] args) {
 		Main main = new Main();
 
-		regOvelse();
+//		regOvelse();
 //		regTrening();
 //        regApparat();
+		getNSisteOvelser();
 		
 	}	
 }

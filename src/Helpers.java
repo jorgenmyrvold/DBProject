@@ -143,4 +143,9 @@ public class Helpers {
         System.out.println("Beskriv av øvelsen?");
         return reader.nextLine();
     }
+
+    public static int getN(Scanner reader) {
+		System.out.println("Hvor mange øvelser ønsker du å se resultater fra?");
+		return reader.nextInt();
+	}
 }
