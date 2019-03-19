@@ -7,7 +7,6 @@ public class Main {
 		System.out.println("Velkommen til treningsdagboka di!");
 	}
 	
-	
 	public static void run() {
 		Scanner reader = new Scanner(System.in);
 		String menu = ("\nHva vil du gjï¿½re? (0-?)\n" +
@@ -59,7 +58,7 @@ public class Main {
         ArrayList<String> ovelseGrupper = Helpers.getOvelseGrupper(reader);
      
         
-        //TODO: Sjekke om apparatet eksisterer i databasen og evt kjøre regApparat() først
+        //TODO: Sjekke om apparatet eksisterer i databasen og evt kjï¿½re regApparat() fï¿½rst
 
         RegOvelseCtrl regOvelse = new RegOvelseCtrl();
         if (isApparat){
