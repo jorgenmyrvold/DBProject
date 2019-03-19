@@ -41,7 +41,6 @@ public class DBQuery extends DBConn{
         try {
             PreparedStatement getData = conn.prepareStatement("SELECT * FROM OvelseIGruppe WHERE Gruppenavn = '" + gruppenavn + "'");
             ResultSet rs = getData.executeQuery();
-            ResultSetMetaData rsmd = rs.getMetaData();
 
             System.out.println("Følgende øvelser hører til " + gruppenavn);
 
@@ -54,4 +53,19 @@ public class DBQuery extends DBConn{
         }
     }
 
+    public void getPers(String ovelseNavn) {
+        try {
+            PreparedStatement getData = conn.prepareStatement("SELECT MAX(Vekt) FROM OvelserITreningsokt WHERE OvelseNavn = '" + ovelseNavn + "'");
+            ResultSet rs = getData.executeQuery();
+
+            System.out.println("Din personlige rekord for " + ovelseNavn + " er: ");
+
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+            }
+
+        } catch (Exception e) {
+            System.out.println("db error fetching data = "+e);
+        }
+    }
 }
