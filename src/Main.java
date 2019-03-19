@@ -1,8 +1,3 @@
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -55,7 +50,6 @@ public class Main {
 		RegTreningCtrl regTrening = new RegTreningCtrl();
 		regTrening.regTrening(tidspunkt, varighet, form, prestasjon, notat);
 	}
-
 
     public static void regOvelse(Scanner reader) {
         String ovelseNavn = Helpers.getOvelseNavn(reader);

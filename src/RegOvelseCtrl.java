@@ -2,6 +2,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Optional;
 
+
 public class RegOvelseCtrl extends DBConn {
 
     private PreparedStatement regStatement;
@@ -11,7 +12,6 @@ public class RegOvelseCtrl extends DBConn {
         startRegOvelse();
     }
 
-    // Registrering hvis vi må ha en overgangstabell med apparat og øvelse
     public void startRegOvelse() {
         try {
             regStatement = conn.prepareStatement("INSERT INTO Ovelse VALUES ((?), (?), (?))");
@@ -20,7 +20,7 @@ public class RegOvelseCtrl extends DBConn {
         }
     }
 
-    // Kan brukes b�de med 2 og 3 argumenter.
+    // Kan brukes både med 2 og 3 argumenter.
     public void regOvelse(String navn, String beskrivelse, String... apparatOpt) {
         String apparat = apparatOpt.length == 1 ? apparatOpt[0] : null;
 
@@ -38,6 +38,6 @@ public class RegOvelseCtrl extends DBConn {
     
     public static void main(String[] args) {
 		RegOvelseCtrl ctrl = new RegOvelseCtrl();
-		ctrl.regOvelse("Benkpress", "Husk � ha en som spotter!", "Benk");
+		ctrl.regOvelse("Benkpress", "Husk å ha en som spotter!", "Benk");
 	}
 }
