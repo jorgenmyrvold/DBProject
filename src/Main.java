@@ -6,13 +6,15 @@ public class Main {
 	public Main() {
 		System.out.println("Velkommen til treningsdagboka di!");
 	}
-	
+
 	public static void run() {
 		Scanner reader = new Scanner(System.in);
 		String menu = ("\nHva vil du gj�re? (0-?)\n" +
 				"1) Registrer trening \n" +
-				"2) Se siste treningsøkter\n" +
-				"3) ???\n" +
+				"2) Reigstrer Apparat\n" +
+				"3) Registrer Øvelse\n" +
+                "4) Se siste treningsøkter\n" +
+                "5) Hent øvelser tilknyttet gruppe\n" +
 				"0) Avslutt\n");
 		String ans = "";
 		
@@ -24,17 +26,22 @@ public class Main {
 				regTrening(reader);
 				break;
 			case "2":
-				getNSisteOvelser(reader);
-				break;
+                regApparat(reader);
+                break;
 			case "3":
-				System.out.println("Ett eller anna");
 				regOvelse(reader);
 				break;
+			case "4":
+                getNSisteOvelser(reader);
+                break;
+            case "5":
+                getOvelserIGruppe(reader);
+                break;
 			case "0":
 				reader.close();
 				return;
 			default:
-				System.out.println("Input m� vere et tall mellom 0 og 3");
+				System.out.println("Input må vere et tall mellom 0 og 5");
 			}
 		}
 	}
@@ -70,11 +77,9 @@ public class Main {
         }
     }
 
-	public static void regApparat() {
-	    Scanner reader = new Scanner(System.in);
+	public static void regApparat(Scanner reader) {
 	    String apparatNavn = Helpers.getApparatNavn(reader);
 	    String apparatBeskrivelse = Helpers.getApparatBeskrivelse(reader);
-        reader.close();
 
         RegApparatCtrl regApparatCtrl = new RegApparatCtrl();
         regApparatCtrl.regApparat(apparatNavn, apparatBeskrivelse);
@@ -86,15 +91,18 @@ public class Main {
 		DBQuery getNSisteTreninger = new DBQuery();
 		getNSisteTreninger.getNSisteTreningsokter(n);
 	}
+
+	public static void getOvelserIGruppe(Scanner reader) {
+	    String gruppenavn = Helpers.getGruppeNavn(reader);
+
+	    DBQuery getOvelseIGruppe = new DBQuery();
+	    getOvelseIGruppe.getOvelserIGruppe(gruppenavn);
+    }
 	
 	public static void main(String[] args) {
 		Main main = new Main();
 
 		run();
-//		regOvelse();
-//		regTrening();
-//        regApparat();
-//		getNSisteOvelser();
 		
 	}	
 }

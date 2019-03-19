@@ -18,14 +18,40 @@ public class DBQuery extends DBConn{
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnsNumber = rsmd.getColumnCount();
 
-            System.out.println(rsmd.getColumnName(1) + "\t\t\t\t" + rsmd.getColumnName(2) + "\t" + rsmd.getColumnName(3) + "\t" + rsmd.getColumnName(4) + "\t" + rsmd.getColumnName(5));
+            System.out.println(rsmd.getColumnName(1) + "\t\t\t\t" +
+                               rsmd.getColumnName(2) + "\t" +
+                               rsmd.getColumnName(3) + "\t" +
+                               rsmd.getColumnName(4) + "\t" +
+                               rsmd.getColumnName(5));
 
             while (rs.next()) {
-                System.out.println(rs.getString(1) + "\t\t" + rs.getString(2) + "\t\t\t" + rs.getString(3) + "\t\t" + rs.getString(4) + "\t\t\t" + rs.getString(5));
+                System.out.println(rs.getString(1) + "\t\t" +
+                                   rs.getString(2) + "\t\t\t" +
+                                   rs.getString(3) + "\t\t" +
+                                   rs.getString(4) + "\t\t\t" +
+                                   rs.getString(5));
             }
 
         } catch (Exception e) {
             System.out.println("db error fetching data = "+e);
         }
     }
+
+    public void getOvelserIGruppe(String gruppenavn) {
+        try {
+            PreparedStatement getData = conn.prepareStatement("SELECT * FROM OvelseIGruppe WHERE Gruppenavn = '" + gruppenavn + "'");
+            ResultSet rs = getData.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            System.out.println("Følgende øvelser hører til " + gruppenavn);
+
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+            }
+
+        } catch (Exception e) {
+            System.out.println("db error fetching data = "+e);
+        }
+    }
+
 }
