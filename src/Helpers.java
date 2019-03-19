@@ -146,7 +146,7 @@ public class Helpers {
     }
     
     public static ArrayList<String> getOvelseGrupper(Scanner reader) {
-    	System.out.println("Hvilke(n) øvelsegruppe hører øvelsen til? \n" + 
+    	System.out.println("Hvilke(n) Ã¸velsegruppe hÃ¸rer Ã¸velsen til? \n" +
     			"Trykk enter mellom hver gruppe og avslutt med 'q'");
     	ArrayList<String> ovelseGrupper = new ArrayList<String>();
     	while (true) {
