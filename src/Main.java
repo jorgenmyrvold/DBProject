@@ -10,9 +10,9 @@ public class Main {
 	
 	public static void run() {
 		Scanner reader = new Scanner(System.in);
-		String menu = ("Hva vil du gjøre? (0-?)\n" +
+		String menu = ("Hva vil du gjï¿½re? (0-?)\n" +
 				"1) Registrer trening \n" +
-				"2) Se siste treningsøkter\n" +
+				"2) Se siste treningsï¿½kter\n" +
 				"3) ???\n" +
 				"0) Avslutt\n");
 		String ans = "";
@@ -25,7 +25,7 @@ public class Main {
 				regTrening(reader);
 				break;
 			case "2":
-				System.out.println("Henter ut liste over treningsøkter");
+				System.out.println("Henter ut liste over treningsï¿½kter");
 				break;
 			case "3":
 				System.out.println("Ett eller anna");
@@ -35,7 +35,7 @@ public class Main {
 				reader.close();
 				return;
 			default:
-				System.out.println("Input må vere et tall mellom 0 og 3");
+				System.out.println("Input mï¿½ vere et tall mellom 0 og 3");
 			}
 		}
 	}
@@ -81,13 +81,23 @@ public class Main {
         regApparatCtrl.regApparat(apparatNavn, apparatBeskrivelse);
     }
 
+    public static void getNSisteOvelser() {
+		Scanner reader = new Scanner(System.in);
+		int n = Helpers.getN(reader);
+		reader.close();
+
+		DBQuery getNSisteTreninger = new DBQuery();
+		getNSisteTreninger.getNSisteTreningsokter(n);
+	}
 	
 	public static void main(String[] args) {
 		Main main = new Main();
+
 		run();
 //		regOvelse();
 //		regTrening();
 //        regApparat();
+		getNSisteOvelser();
 		
 	}	
 }

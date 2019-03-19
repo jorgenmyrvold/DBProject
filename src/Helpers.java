@@ -158,4 +158,9 @@ public class Helpers {
     	}
     	return ovelseGrupper;
     }
+
+    public static int getN(Scanner reader) {
+		System.out.println("Hvor mange øvelser ønsker du å se resultater fra?");
+		return reader.nextInt();
+	}
 }
