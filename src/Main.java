@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -28,6 +29,7 @@ public class Main {
 				break;
 			case "3":
 				System.out.println("Ett eller anna");
+				regOvelse(reader);
 				break;
 			case "0":
 				reader.close();
@@ -44,7 +46,6 @@ public class Main {
 		int form = Helpers.getForm(reader);
 		int prestasjon = Helpers.getEffort(reader);
 		String notat = Helpers.getNote(reader);
-		reader.close();
 		
 		
 		RegTreningCtrl regTrening = new RegTreningCtrl();
@@ -55,6 +56,10 @@ public class Main {
         String ovelseNavn = Helpers.getOvelseNavn(reader);
         String ovelseBeskrivelse = Helpers.getOvelseBeskrivelse(reader);
         Boolean isApparat = Helpers.getIsApparat(reader);
+        ArrayList<String> ovelseGrupper = Helpers.getOvelseGrupper(reader);
+     
+        
+        //TODO: Sjekke om apparatet eksisterer i databasen og evt kjøre regApparat() først
 
         RegOvelseCtrl regOvelse = new RegOvelseCtrl();
         if (isApparat){
@@ -64,7 +69,6 @@ public class Main {
         else {
             regOvelse.regOvelse(ovelseNavn, ovelseBeskrivelse);
         }
-        reader.close();
     }
 
 	public static void regApparat() {
