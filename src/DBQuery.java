@@ -16,7 +16,6 @@ public class DBQuery extends DBConn{
             getData.setInt(1, n);
             ResultSet rs = getData.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
-            int columnsNumber = rsmd.getColumnCount();
 
             System.out.println(rsmd.getColumnName(1) + "\t\t\t\t" +
                                rsmd.getColumnName(2) + "\t" +

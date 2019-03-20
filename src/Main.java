@@ -38,6 +38,9 @@ public class Main {
             case "5":
                 getOvelserIGruppe(reader);
                 break;
+			case"6":
+				getPers(reader);
+				break;
 			case "0":
 				reader.close();
 				return;
@@ -110,8 +113,8 @@ public class Main {
     public static void getNSisteOvelser(Scanner reader) {
 		int n = Helpers.getN(reader);
 
-		DBQuery getNSisteTreninger = new DBQuery();
-		getNSisteTreninger.getNSisteTreningsokter(n);
+		DBQuery query = new DBQuery();
+		query.getNSisteTreningsokter(n);
 	}
 
 	public static void getOvelserIGruppe(Scanner reader) {
@@ -120,6 +123,13 @@ public class Main {
 	    DBQuery query = new DBQuery();
 	    query.getOvelserIGruppe(gruppenavn);
     }
+
+    public static void getPers(Scanner reader) {
+		String ovelseNavn = Helpers.getOvelseNavn(reader);
+
+		DBQuery query = new DBQuery();
+		query.getPers(ovelseNavn);
+	}
 	
 	public static void main(String[] args) {
 		run();
