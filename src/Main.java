@@ -1,5 +1,8 @@
 import java.util.Iterator;
 import java.util.Scanner;
+import java.io.*;
+import java.awt.GraphicsEnvironment;
+import java.net.URISyntaxException;
 
 public class Main {
 	
@@ -9,7 +12,7 @@ public class Main {
 
 	public static void run() {
 		Scanner reader = new Scanner(System.in);
-		String menu = ("\nHva vil du gjøre? (0-?)\n" +
+		String menu = ("\nHva vil du gjøre? (0-7)\n" +
 				"1) Registrer trening \n" +
 				"2) Reigstrer Apparat\n" +
 				"3) Registrer Øvelse\n" +
@@ -175,9 +178,7 @@ public class Main {
 	    query.getOvelseRes(ovelseNavn, start_dato, slutt_dato);
     }
 	
-	public static void main(String[] args) {
+    public static void main (String... args) {
 		run();
-//		Scanner reader = new Scanner(System.in);
-//		System.out.println(Helpers.getOvelseNavn(reader));
 	}	
 }
