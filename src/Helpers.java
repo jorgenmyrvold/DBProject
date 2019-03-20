@@ -69,7 +69,7 @@ public class Helpers {
 		return reader.nextLine();
 	}
 	
-	private static String getDato(Scanner reader) {
+	public static String getDato(Scanner reader) {
 		String dato = "";
 		do {
 			System.out.println("Var treningen i dag? (y/n)");
@@ -93,7 +93,7 @@ public class Helpers {
 		return dato;
 	}
 	
-	private static boolean isDateValid(String date) 
+	private static boolean isDateValid(String date)
 	{
 	        try {
 	            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -188,4 +188,28 @@ public class Helpers {
 			System.out.println(RED + "Input må vere et heltall" + RESET);
 		}
     }
+
+	public static String getDatoOvelseRes(Scanner reader) {
+		String dato = "";
+		do {
+			System.out.println("Ønser du å velge dagens dato? (y/n)");
+			String ans = reader.next();
+
+			if (ans.equalsIgnoreCase("y")) {
+				dato = LocalDate.now().toString();
+			} else if (ans.equalsIgnoreCase("n")){
+				while (true) {
+					System.out.println("Vennligs oppgi dato: (YYYY-MM-DD)");
+					ans = reader.next();
+//					ans.matches("\\d{4}-\\d{2}-\\d{2}") &&
+					if (isDateValid(ans)) {
+						dato = ans;
+						break;
+					}
+					System.out.println(RED + "Ugyldig dato" + RESET);
+				}
+			}
+		} while (dato.isEmpty());
+		return dato;
+	}
 }

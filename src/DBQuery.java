@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -16,7 +17,6 @@ public class DBQuery extends DBConn{
             getData.setInt(1, n);
             ResultSet rs = getData.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
-            int columnsNumber = rsmd.getColumnCount();
 
             System.out.println(rsmd.getColumnName(1) + "\t\t\t\t" +
                                rsmd.getColumnName(2) + "\t" +
@@ -92,7 +92,27 @@ public class DBQuery extends DBConn{
             return null;
         }
     }
-    
+
+    public void getOvelseRes(String ovelseNavn, String start, String slutt) {
+        try {
+            PreparedStatement getData = conn.prepareStatement("SELECT Tidspunkt, Vekt, AntallSett " +
+                                                                   "FROM (OvelserITreningsokt NATURAL JOIN Treningsokt) " +
+                                                                   "WHERE (Tidspunkt <= '" + slutt + "' AND Tidspunkt >= '" + start + "' AND OvelseNavn = '" + ovelseNavn + "')");
+            ResultSet rs = getData.executeQuery();
+
+            System.out.println("Resultater fra " + ovelseNavn + ":");
+            System.out.println("Dato\t\t\t\tVekt\tAntall Sett");
+            while (rs.next()) {
+                for (int i = 1; i < 4; i++) {
+                    System.out.print(rs.getString(i) + "\t");
+                }
+                System.out.println();
+            }
+        } catch (Exception e) {
+            System.out.println("db error fetching data = "+e);
+        }
+    }
+
     public static void main(String[] args) {
 //		DBQuery query = new DBQuery();
 //		System.out.println(query.getApparat("Benkpress"));
