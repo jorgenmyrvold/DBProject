@@ -38,8 +38,9 @@ public class RegGjennomfortOvelseCtrl extends DBConn {
 	        regStatement.setInt(2, vekt);;
 	        regStatement.setInt(3, antallSett);
 	        regStatement.setNull(4, java.sql.Types.VARCHAR);
-	        System.out.println(regStatement.toString());
+//	        System.out.println(regStatement.toString());
 	        regStatement.execute();
+	        System.out.println(navn + " er registrert som gjennomført øvelse");
         } catch (SQLException e) {
             e.printStackTrace();
         }

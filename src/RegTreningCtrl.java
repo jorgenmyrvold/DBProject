@@ -26,8 +26,9 @@ public class RegTreningCtrl extends DBConn {
             regStatement.setInt(3, form);
             regStatement.setInt(4, prestasjon);
             regStatement.setString(5, notat);
-            System.out.println(regStatement.toString());
+//            System.out.println(regStatement.toString());
             regStatement.execute();
+            System.out.println("Trening registrert!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

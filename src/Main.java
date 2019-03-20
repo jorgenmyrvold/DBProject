@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
 
 	public static void run() {
 		Scanner reader = new Scanner(System.in);
-		String menu = ("\nHva vil du gj�re? (0-?)\n" +
+		String menu = ("\nHva vil du gjøre? (0-?)\n" +
 				"1) Registrer trening \n" +
 				"2) Reigstrer Apparat\n" +
 				"3) Registrer Øvelse\n" +
@@ -52,12 +53,25 @@ public class Main {
 		int varighet = Helpers.getVarighet(reader);
 		int form = Helpers.getForm(reader);
 		int prestasjon = Helpers.getEffort(reader);
+		reader.nextLine();
 		String notat = Helpers.getNote(reader);
 		
 		
 		RegTreningCtrl regTrening = new RegTreningCtrl();
 		regTrening.regTrening(tidspunkt, varighet, form, prestasjon, notat);
 		
+		while (true) {
+			System.out.println("Har du gjennomført flere øvelser? (y/n)");
+			String ans = reader.next();
+			reader.nextLine();
+			if (ans.equalsIgnoreCase("n")) {
+				break;
+			} else if (ans.equalsIgnoreCase("y")) {
+				regGjennomfortOvelse(reader);				
+			} else {
+				System.out.println("Du må svare y eller n");
+			}
+		}
 		
 	}
 	
@@ -65,6 +79,7 @@ public class Main {
 		String ovelseNavn = Helpers.getOvelseNavn(reader);
 		DBQuery query = new DBQuery();
         if (!query.ovelseExisits(ovelseNavn)) {
+        	System.out.println("Dette er en ny øvelse, så vennligst si litt mer om den\n");
         	regOvelse(reader, ovelseNavn);
         }
         String apparat = query.getApparat(ovelseNavn);
@@ -84,23 +99,37 @@ public class Main {
     	String ovelseNavn = strings.length == 1 ? strings[0] : Helpers.getOvelseNavn(reader);
         String ovelseBeskrivelse = Helpers.getOvelseBeskrivelse(reader);
         Boolean isApparat = Helpers.getIsApparat(reader);
-        ArrayList<String> ovelseGrupper = Helpers.getOvelseGrupper(reader);
-     
         
-        //TODO: Sjekke om apparatet eksisterer i databasen og evt kj�re regApparat() f�rst
-
         RegOvelseCtrl regOvelse = new RegOvelseCtrl();
         if (isApparat){
             String apparatNavn = Helpers.getApparatNavn(reader);
+            DBQuery query = new DBQuery();
+            if (query.getApparat(apparatNavn) == null) {
+            	System.out.println("Dette er et nytt apparat. Vennligst si litt mer om det\n");
+            	regApparat(reader, apparatNavn);
+            }
             regOvelse.regOvelse(ovelseNavn, ovelseBeskrivelse, apparatNavn);
         }
         else {
             regOvelse.regOvelse(ovelseNavn, ovelseBeskrivelse);
         }
+        regOvelseIGruppe(reader, ovelseNavn);
+    }
+    
+    public static void regOvelseIGruppe(Scanner reader, String ovelseNavn) {
+    	Iterator<String> ovelseGrupper = Helpers.getOvelseGrupper(reader);
+    	
+    	RegOvelseIGruppeCtrl ctrl = new RegOvelseIGruppeCtrl();
+    	while(ovelseGrupper.hasNext()) {
+    		String gruppe = ovelseGrupper.next();
+    		if (gruppe.length() > 0) {
+    			ctrl.regOvelse(ovelseNavn, gruppe);    			
+    		}
+    	}
     }
 
-	public static void regApparat(Scanner reader) {
-	    String apparatNavn = Helpers.getApparatNavn(reader);
+	public static void regApparat(Scanner reader, String...strings) {
+	    String apparatNavn = strings.length > 0 ? strings [0] : Helpers.getApparatNavn(reader);
 	    String apparatBeskrivelse = Helpers.getApparatBeskrivelse(reader);
 
         RegApparatCtrl regApparatCtrl = new RegApparatCtrl();

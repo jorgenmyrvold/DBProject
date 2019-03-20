@@ -28,8 +28,9 @@ public class RegOvelseCtrl extends DBConn {
             regStatement.setString(1, navn);
             regStatement.setString(2, beskrivelse);
             regStatement.setString(3, apparat);
-            System.out.println(regStatement.toString());
+//            System.out.println(regStatement.toString());
             regStatement.execute();
+            System.out.println(navn + " er registrert som øvelse!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

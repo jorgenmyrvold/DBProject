@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Helpers {
@@ -121,7 +122,7 @@ public class Helpers {
 
     public static Boolean getIsApparat(Scanner reader) {
 		System.out.println("Er det apparat eller fri øvelse (a/f)");
-		String ans = reader.next();
+		String ans = reader.nextLine();
 		while (true) {
 			if (ans.equalsIgnoreCase("a")) {
 				return true;
@@ -146,18 +147,19 @@ public class Helpers {
         return reader.nextLine();
     }
     
-    public static ArrayList<String> getOvelseGrupper(Scanner reader) {
+    public static Iterator<String> getOvelseGrupper(Scanner reader) {
     	System.out.println("Hvilke(n) øvelsegruppe hører øvelsen til? \n" +
     			"Trykk enter mellom hver gruppe og avslutt med 'q'");
     	ArrayList<String> ovelseGrupper = new ArrayList<String>();
     	while (true) {
-    		String gruppe = reader.next();
+    		String gruppe = reader.nextLine();
     		if (gruppe.equals("q")) {
     			break;
     		}
     		ovelseGrupper.add(gruppe);
     	}
-    	return ovelseGrupper;
+    	return ovelseGrupper.iterator();
+    	
     }
 
     public static int getN(Scanner reader) {

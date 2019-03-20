@@ -22,8 +22,9 @@ public class RegApparatCtrl extends DBConn {
         try {
             regStatement.setString(1, navn);
             regStatement.setString(2, beskrivelse);
-            System.out.println(regStatement.toString());
+//            System.out.println(regStatement.toString());
             regStatement.execute();
+            System.out.println("Apparatet " + navn + " er registrert!");
         } catch (SQLException e) {
             e.printStackTrace();
         }

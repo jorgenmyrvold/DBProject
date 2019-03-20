@@ -22,8 +22,9 @@ public class RegOvelseIGruppeCtrl extends DBConn{
         try {
             regStatement.setString(1, ovelseNavn);
             regStatement.setString(2, gruppeNavn);
-            System.out.println(regStatement.toString());
+//            System.out.println(regStatement.toString());
             regStatement.execute();
+            System.out.println("Øvelsegruppe " + gruppeNavn + " er registrert for " + ovelseNavn);
         } catch (SQLException e) {
             e.printStackTrace();
         }
