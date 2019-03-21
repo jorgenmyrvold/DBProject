@@ -1,5 +1,4 @@
 #DROP TABLES IF EXISTS OvelserITreningsokt, OvelseIGruppe, Treningsokt, Ovelse, Apparat;
-DROP TABLE OvelserITreningsokt;
 
 CREATE TABLE Treningsokt(
 	TreningsoktID INTEGER NOT NULL AUTO_INCREMENT,
